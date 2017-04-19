@@ -5,14 +5,13 @@ module.exports = function(context) {
 	const fs = require('fs');
 
 	const blackListExtensions = ['psd'];
-	const imagesPath = 'platforms\\android\\assets\\www\\assets\\images\\';
-	const imagesAndroidPath = imagesPath + 'android\\';
+	const blackListPaths = [
+		'platforms\\android\\assets\\www\\assets\\images\\',
+		'platforms\\android\\assets\\www\\assets\\images\\android\\'
+	];
 
-	let imagesArray = fs.readdirSync(imagesPath, {'encoding': 'UTF-8'});
-	let imagesAndroidArray = fs.readdirSync(imagesAndroidPath, {'encoding': 'UTF-8'});
-	let imagesBlackListArray = [];
-
-	function getBlackListFiles(imagesArray, imagesPath) {
+	function getBlackListFiles(imagesPath) {
+		var imagesArray = fs.readdirSync(imagesPath, {'encoding': 'UTF-8'});
 		imagesArray.forEach(function(value) {
 		  value = imagesPath + value;
 			var valueExtension = value.substr(value.length - 3).toLowerCase();
@@ -22,8 +21,9 @@ module.exports = function(context) {
 		});
 	}
 
-	getBlackListFiles(imagesArray, imagesPath);
-	getBlackListFiles(imagesAndroidArray, imagesAndroidPath);
+	blackListPaths.forEach(function(value) {
+		getBlackListFiles(value);
+	});
 
 	console.log('END IGNOREFILES.JS');
 
