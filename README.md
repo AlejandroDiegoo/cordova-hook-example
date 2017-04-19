@@ -14,7 +14,7 @@ Add your script to the configuration file.
 
 ### ignoreFiles.js
 
-Edit script to change extensions and file paths.
+Edit the hook script to change extensions and file paths.
 
 ```javascript
 const blackListExtensions = ['psd'];
@@ -23,7 +23,3 @@ const blackListPaths = [
 	'platforms\\android\\assets\\www\\assets\\images\\android\\'
 ];
 ```
-
-You can see **cordova-hook-example** working in:
-- https://github.com/AlejandroDiegoo/appest-reject
-- https://play.google.com/store/apps/details?id=com.appestreject
